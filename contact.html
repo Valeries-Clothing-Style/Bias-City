@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bais City Dolphin & Whale Watching</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Background */
+        body {
+            position: relative;
+            background-image: url('https://pinaywise.com/wp-content/uploads/2024/01/Dolphin-Watching-and-Manjuyod-Sandbar-Tour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 150vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -90;
+        }
+
+    
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(0, 83, 166, 0.8), rgba(0, 0, 0, 60));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes waterMovement {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .navbar .logo-placeholder img {
+            width: 70px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo-placeholder img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Burger Menu Icon */
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: color 0.5s ease, transform 0.5s ease;
+        }
+
+        .navbar a:hover {
+            color: gold;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .navbar-links.mobile-menu {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar-links.mobile-menu a {
+            display: block;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+        }
+
+        /* Contact Header Section */
+        #contact-header {
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            margin-top: 10px;
+        }
+
+        #contact-header h1 {
+            margin-top: -20px;
+            color: gold;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        #contact-header p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: gold;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #ffdb4d;
+        }
+
+        .contact-form button {
+            background-color: #ffdb4d;
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #f1c40f;
+        }
+
+        /* Google Map Section */
+        .map-section {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* Footer Section */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 68, 136, 0.8), rgba(0, 0, 0, 0.3));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer .social-icons {
+            margin: 20px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 28px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-links {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        footer .footer-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-button {
+            background-color: #ffdb4d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-button:hover {
+            background-color: #f1c40f;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .burger-menu {
+                display: block;
+            }
+
+            #home-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-placeholder">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tourism.html">Tourism</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+      <!-- Contact Page Content -->
+      <section id="contact-header">
+        <h1>Get in Touch</h1>
+        <p>We would love to hear from you! Whether you have questions, feedback, or want to book a tour, our team is ready to assist you.</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <form class="contact-form" id="contactForm" action="your-server-endpoint" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+      <!-- Success Modal -->
+      <div id="successModal" class="modal">
+        <div class="modal-content">
+            <p>Message Sent!</p>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <h2>Find us:</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10925.018665639352!2d123.0179145519941!3d9.57981949963555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33abbb2b7735bb75%3A0xc1d6155c47f01fcb!2sBais%20City%2C%20Negros%20Oriental!5e0!3m2!1sen!2sph!4v1676970568453!5m2!1sen!2sph" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-instagram"></a>
+        </div>
+        <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bais City Dolphin & Whale Watching. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-links');
+            menu.classList.toggle('mobile-menu');
+        }
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); 
+            document.getElementById('successModal').style.display = 'flex';
+            setTimeout(function () {
+                document.getElementById('successModal').style.display = 'none';
+            }, 1000); 
+        });
+    </script>
+</body>
+</html>

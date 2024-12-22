@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bais City Dolphin & Whale Watching</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and Background */
+        body {
+            position: relative;
+            background-image: url('https://pinaywise.com/wp-content/uploads/2024/01/Dolphin-Watching-and-Manjuyod-Sandbar-Tour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -90;
+        }
+
+        /* Navbar Styling with Dark Blue and Transparent Water Effect */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(0, 83, 166, 0.8), rgba(0, 0, 0, 60));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes waterMovement {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar .logo-placeholder img {
+            width: 70px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo-placeholder img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Burger Menu Icon */
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: color 0.5s ease, transform 0.5s ease;
+        }
+
+        .navbar a:hover {
+            color: gold;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .navbar-links.mobile-menu {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar-links.mobile-menu a {
+            display: block;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+        }
+
+        /* Page Content */
+        #tourism-page {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #tourism-page h1 {
+            margin-top: -20px;
+            color: gold;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        #tourism-page .intro-text {
+            color: white;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .tourism-section h2 {
+            font-size: 2.5rem;
+            color: gold;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section-description {
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Image Gallery */
+        .tourism-gallery {
+            display: flex;
+            justify-content: space-around;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tourism-gallery img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tourism-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Services List */
+        .services-list {
+            list-style: none;
+            margin-top: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .services-list li {
+            font-size: 1.0rem;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .services-list li:hover {
+            color: #f1c40f;
+        }
+
+        /* Footer Section */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 68, 136, 0.8), rgba(0, 0, 0, 0.3));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer .social-icons {
+            margin: 20px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 28px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-links {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        footer .footer-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .burger-menu {
+                display: block;
+            }
+
+            .navbar-links.mobile-menu {
+                display: block;
+            }
+
+            #tourism-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-placeholder">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tourism.html">Tourism</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tourism Page Content -->
+    <section id="tourism-page">
+        <div class="tourism-header">
+            <h1>Explore Bais City: A Haven for Dolphin & Whale Watching</h1>
+            <p class="intro-text">
+                Bais City, located in the heart of the Philippines, is renowned for its stunning natural beauty, offering one of the best dolphin and whale watching experiences in the country. The crystal-clear waters of the Tañon Strait provide the perfect backdrop for your next unforgettable adventure.
+            </p>
+        </div>
+    
+        <!-- Dolphin & Whale Watching Section -->
+        <div id="dolphin-whale-watching" class="tourism-section">
+            <h2>Dolphin & Whale Watching</h2>
+            <p class="section-description">
+                Dive into the exciting world of marine life with our guided dolphin and whale watching tours. Whether you're a nature enthusiast or a family looking for a thrilling adventure, Bais City is home to playful dolphins, gentle whales, and rich marine biodiversity. Our experienced guides will ensure a safe and memorable experience as you spot these majestic creatures in their natural habitat.
+            </p>
+            <div class="tourism-gallery">
+                <img src="dolphin-1.jpg" alt="Dolphins swimming" />
+                <img src="whale-1.jpg" alt="Whale breaching" />
+                <img src="dolphin-2.jpg" alt="Group of dolphins" />
+            </div>
+        </div>
+    
+        <!-- Manjuyod Sandbar Section -->
+        <div id="manjuyod-sandbar" class="tourism-section">
+            <h2>Manjuyod Sandbar: A Paradise Getaway</h2>
+            <p class="section-description">
+                Just a short boat ride from the city, the Manjuyod Sandbar offers pristine white sands and clear turquoise waters, ideal for a relaxing day under the sun. This beautiful sandbar is often referred to as the "Maldives of the Philippines" because of its unmatched beauty. Whether you want to sunbathe, swim, or indulge in water sports, Manjuyod promises an unforgettable experience.
+            </p>
+            <div class="tourism-gallery">
+                <img src="sandbar-1.jpg" alt="Manjuyod Sandbar" />
+                <img src="sandbar-2.jpg" alt="Tourists enjoying the sandbar" />
+                <img src="sandbar-3.jpg" alt="Aerial view of the sandbar" />
+            </div>
+        </div>
+    
+        <!-- Other Tourist Attractions Section -->
+        <div id="other-attractions" class="tourism-section">
+            <h2>Other Must-See Attractions</h2>
+            <p class="section-description">
+                Beyond dolphin and whale watching, Bais City is also home to a variety of natural wonders and cultural sites that are sure to captivate every traveler. Visit the serene Magsico Falls, explore the lush forests surrounding the area, or enjoy a visit to the local cultural centers. Bais City offers a unique blend of adventure and relaxation for all kinds of travelers.
+            </p>
+            <div class="tourism-gallery">
+                <img src="falls-1.jpg" alt="Magsico Falls" />
+                <img src="forest-1.jpg" alt="Lush forests" />
+                <img src="cultural-center-1.jpg" alt="Cultural site in Bais" />
+            </div>
+        </div>
+    
+        <!-- Tours & Services Section -->
+        <div id="tourism-services" class="tourism-section">
+            <h2>Our Exclusive Tours & Services</h2>
+            <p class="section-description">
+                At Bais City Dolphin & Whale Watching, we offer custom tour packages that cater to every interest. From private dolphin-watching tours to day trips to the Manjuyod Sandbar, we ensure that your experience is tailored to your needs. Our professional tour guides are passionate about showcasing the best of Bais City, making every moment truly special.
+            </p>
+            <ul class="services-list">
+                <li>🟡 Private Dolphin Watching Tours</li>
+                <li>🟡 Group Tours to Manjuyod Sandbar</li>
+                <li>🟡 Guided Snorkeling and Scuba Diving Trips</li>
+                <li>🟡 Cultural and Heritage Tours</li>
+                <li>🟡 Transport and Boat Rentals</li>
+            </ul>
+        </div>
+    </section>
+    
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-instagram"></a>
+        </div>
+        <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bais City Dolphin & Whale Watching. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-links');
+            menu.classList.toggle('mobile-menu');
+        }
+    </script>
+</body>
+</html>

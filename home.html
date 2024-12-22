@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bais City Dolphin & Whale Watching</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }     
+        body {
+            position: relative;
+            background-image: url('https://pinaywise.com/wp-content/uploads/2024/01/Dolphin-Watching-and-Manjuyod-Sandbar-Tour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 150vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -90;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(0, 83, 166, 0.8), rgba(0, 0, 0, 60));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes waterMovement {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar .logo-placeholder img {
+            width: 70px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo-placeholder img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Burger Menu Icon */
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: color 0.5s ease, transform 0.5s ease;
+        }
+
+        .navbar a:hover {
+            color: gold;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .navbar-links.mobile-menu {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar-links.mobile-menu a {
+            display: block;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+        }
+
+        /* Home Page Content */
+        #home-page {
+            margin-top: 40px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        #home-page h1 {
+            margin-top: -50px;
+            font-size: 2.2rem;
+            color: #ffdb4d;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #home-page .intro-text {
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            padding: 10px;
+            color: #f1f1f1;
+        }
+
+        .explore-button {
+            display: inline-block;
+            background: linear-gradient(145deg, #ffdb4d, #f39c12); /* Gradient for a rich effect */
+            color: #2c3e50; /* Darker text for contrast */
+            padding: 10px 15px; /* Increased padding for a more luxurious feel */
+            font-size: 1.2rem; /* Slightly larger font size for impact */
+            font-weight: 300; /* Bold font weight for a more prominent look */
+            text-decoration: none;
+            border-radius: 50px; /* Fully rounded corners for smoothness */
+            margin-top: 30px; /* Extra space above the button */
+            text-transform: uppercase; /* Uppercase for a formal, refined look */
+            letter-spacing: 1px; /* Slight letter-spacing for a more polished appearance */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Larger, softer shadow for depth */
+            transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+            cursor: pointer; /* Pointer cursor to signify clickability */
+        }
+        
+        .explore-button:hover {
+            background: linear-gradient(145deg, #f39c12, #ffdb4d); /* Reversed gradient on hover */
+            color: #ffffff; /* Light text color on hover */
+            transform: translateY(-6px); /* Slight lift effect for more interactivity */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover for a 3D effect */
+            transition: all 0.3s ease-in-out; /* Smooth transition */
+        }
+        
+        .explore-button:focus {
+            outline: none; /* Remove the default outline */
+            box-shadow: 0 0 0 4px rgba(255, 223, 77, 0.6); /* Focus ring with the gold color */
+            transform: scale(1.05); /* Slight scaling effect when focused */
+        }
+        
+        .explore-button:active {
+            transform: translateY(-1px); /* Subtle "press" effect when clicked */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Softer shadow when clicked */
+        }
+        
+        /* Add subtle animation when the page loads */
+        @keyframes buttonFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .explore-button {
+            animation: buttonFadeIn 0.5s ease-out forwards;
+        }
+        
+
+        .explore-button:hover {
+            background-color: #c19b04;
+            color: #ffffff;
+        }
+
+        /* Card Layout */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: -10px;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.55);
+            padding: 50px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            color: #ffdb4d;
+        }
+
+        .card h3 {
+            color: #ffdb4d;
+            margin-top: 10px;
+        }
+
+        .card p {
+            color: #f5f5f5;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer Section */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 68, 136, 0.8), rgba(0, 0, 0, 0.3));
+            background-size: 200% 200%;
+            animation: waterMovement 5s ease infinite;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer .social-icons {
+            margin: 20px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 28px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-links {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        footer .footer-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #f1f1f1;
+        }
+
+        footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .burger-menu {
+                display: block;
+            }
+
+            #home-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-placeholder">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tourism.html">Tourism</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div id="home-page">
+        <div class="intro-section">
+            <h1>Welcome to Bais City Dolphin & Whale Watching</h1>
+            <p class="intro-text">
+                Embark on an unforgettable adventure to witness the majestic dolphins and whales in their natural habitat in the beautiful Bais City, Negros Oriental.
+            </p>
+            <a href="tourism.html" class="explore-button">Explore</a>
+        </div>
+    </div>
+
+    <!-- Card Layout -->
+    <div class="card-container">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-ship"></i></div>
+            <h3>Our Tours</h3>
+            <p>Join us on a guided tour to explore the marine life of Bais City, including exciting dolphin and whale sightings.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-globe"></i></div>
+            <h3>Eco-Tourism</h3>
+            <p>We promote sustainable tourism practices to protect the environment and ensure future generations can enjoy Bais City’s marine biodiversity.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
+            <h3>Book a Tour</h3>
+            <p>Reserve your spot for an incredible adventure and experience the beauty of the ocean with our expert guides.</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-instagram"></a>
+        </div>
+        <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bais City Dolphin & Whale Watching. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-links');
+            menu.classList.toggle('mobile-menu');
+        }
+    </script>
+</body>
+</html>
